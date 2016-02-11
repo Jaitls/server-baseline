@@ -11,6 +11,6 @@ rm jdk-7u80-linux-x64.tar.gz
 
 #set JAVA environment variables & add to PATH
 sh -c 'echo "export JAVA_HOME=/usr/java/jdk1.7.0_80" >> /etc/profile.d/java.sh'
-sh -c 'echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile.d/java.sh'
+sh -c 'echo "export PATH=\$PATH:\$JAVA_HOME/bin" >> /etc/profile.d/java.sh'
 sh -c 'echo "export JAVA_HOME=/usr/java/jdk1.7.0_80" >> /etc/default/bigtop-utils'
 chmod a+x /etc/profile.d/java.sh
