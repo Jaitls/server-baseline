@@ -2,7 +2,7 @@
 #master node installation script
 
 #check if user is root
-  if [[ $USER == "root" ]]; then
+  if [[ $USER != "root" ]]; then
     echo "Not runing as root!"
     exit 1
   fi
