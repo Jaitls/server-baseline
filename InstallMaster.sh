@@ -1,6 +1,12 @@
 #!/bin/bash
 #master node installation script
 
+#check if user is root
+  if [[ $USER == "root" ]]; then
+    echo "Not runing as root!"
+    exit 1
+  fi
+
 #install JDK 1.7.0_80
 cd; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
 tar xvzf jdk-7u80-linux-x64.tar.gz
