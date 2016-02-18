@@ -1,13 +1,19 @@
 #!/bin/bash
 #master node installation script
 
-#check if user is root
-  if [[ $USER == "root" ]]; then
-    echo "Not runing as root!"
-    exit 1
-  fi
+#future read-in following parameters from json
+	#master or slave config option
+	#master slave ip addresses
+	#
+	#
 
-#install JDK 1.7.0_80
+#check if user is root
+if [[ $USER == "root" ]]; then
+echo "Not runing as root!"
+exit 1
+fi
+
+#install JDK 1.7.0_80 for Hadoop
 cd; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
 tar xvzf jdk-7u80-linux-x64.tar.gz
 mkdir -p /usr/java/
@@ -32,4 +38,7 @@ CODENAME=$(lsb_release -cs)
 echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list
 apt-get -y update
 
-#apt-get -y install mesosphere
+#this will install zookeeper, mesos, marathon, and chronos (for all masters)
+apt-get -y install mesosphere
+#this will install mesos and zookeeper (for all slaves)
+apt-get -y install mesos

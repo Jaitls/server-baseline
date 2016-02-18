@@ -3,6 +3,7 @@
 
 
 #create user jaitls
+#MD5 password hash created using 'echo "password" | openssl passwd -1 -stdin'
 useradd -m -s /bin/bash -p '$1$rB9ODpBI$VrNTbQfuPOb2fAxcEBLAK0' jaitls
 gpasswd -a jaitls sudo
 
