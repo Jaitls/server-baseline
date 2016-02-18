@@ -37,11 +37,8 @@ CODENAME=$(lsb_release -cs)
 echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | tee /etc/apt/sources.list.d/mesosphere.list
 apt-get -y update
 
-<<<<<<< HEAD
 #this will install zookeeper, mesos, marathon, and chronos (for all masters)
 apt-get -y install mesosphere
 #this will install mesos and zookeeper (for all slaves)
 apt-get -y install mesos
-=======
 #apt-get -y install mesosphere
->>>>>>> c344bd78a4c7ecd6b0e3dd58a5944ddaa0680233
