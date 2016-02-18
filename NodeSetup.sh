@@ -1,6 +1,11 @@
 #!/bin/bash
 #customize slave nodes
 
+#check if user is root
+if [[ $USER != "root" ]]; then
+echo "Run script as root"
+exit 1
+fi
 
 #create user jaitls
 #MD5 password hash created using 'echo "password" | openssl passwd -1 -stdin'

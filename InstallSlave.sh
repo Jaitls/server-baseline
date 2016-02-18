@@ -38,6 +38,6 @@ echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | tee /etc/apt
 apt-get -y update
 
 #this will install zookeeper, mesos, marathon, and chronos (for all masters)
-apt-get -y install mesosphere
+#apt-get -y install mesosphere
 #this will install mesos and zookeeper (for all slaves)
-#apt-get -y install mesos
+apt-get -y install mesos
