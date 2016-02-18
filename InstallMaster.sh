@@ -8,18 +8,10 @@
 	#
 
 #check if user is root
-<<<<<<< HEAD
 if [[ $USER != "root" ]]; then
-echo "Not runing as root!"
+echo "Run script as root"
 exit 1
 fi
-=======
-  if [[ $USER != "root" ]]; then
-    echo "Not runing as root!"
-    exit 1
-  fi
->>>>>>> c344bd78a4c7ecd6b0e3dd58a5944ddaa0680233
-
 #install JDK 1.7.0_80 for Hadoop
 cd; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
 tar xvzf jdk-7u80-linux-x64.tar.gz
