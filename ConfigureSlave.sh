@@ -4,7 +4,7 @@
 slaveip=$1
 
 if [[ $slaveip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-  echo 'adding $slaveip to conf files'
+  echo "adding $slaveip to conf files"
 else
   echo "enter valid slave ip address"
 fi
