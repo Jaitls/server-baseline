@@ -1,7 +1,8 @@
 #!/bin/bash
 #slave node configuration
 
-slaveip=$1
+#set slave ip address to ip of eth0
+slaveip=echo `ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'`
 
 #check if user is root
 if [[ $USER != "root" ]]; then
