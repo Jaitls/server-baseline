@@ -12,12 +12,14 @@ fi
 
 #check validity of ip address
 if [[ $slaveip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-  echo "adding slace ip address:$slaveip to conf files"
+  echo "adding $HOSTNAME with ip address $slaveip to conf files"
 else
-  echo "enter valid slave ip address"
+  echo "invalid ip address"
   exit 1
 fi
 
+#allow mesos slaves to communicate to mesos master via zk protocol
+sed -i -e 's/localhost/162.243.120.52/g' /etc/mesos/zk
 #stop zookeeper on slave machines
 service zookeeper stop
 sh -c "echo manual | tee /etc/init/zookeeper.override"
@@ -26,9 +28,9 @@ sh -c "echo manual | tee /etc/init/zookeeper.override"
 service mesos-master stop
 sh -c "echo manual | tee /etc/init/mesos-master.override"
 
-#set mesos slave ip address and hostename
+#set mesos slave ip address and hostname
 sh -c "echo $slaveip | tee /etc/mesos-slave/ip"
-cp /etc/mesos-slave/ip /etc/mesos-slave/hostename
+cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 
 #restart mesos slave
 service mesos-slave restart
