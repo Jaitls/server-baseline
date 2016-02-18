@@ -2,7 +2,7 @@
 #slave node configuration
 
 #set slave ip address to ip of eth0
-slaveip=echo `ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'`
+slaveip=ip route get 8.8.8.8 | awk 'NR==1 {print $NF}'
 
 #check if user is root
 if [[ $USER != "root" ]]; then
