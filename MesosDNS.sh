@@ -11,6 +11,7 @@ exit 1
 fi
 
 
+#create config file for mesos-dns
 mkdir /etc/mesos-dns
 cat <<EOF > /etc/mesos-dns/config.json
 {
@@ -24,3 +25,33 @@ cat <<EOF > /etc/mesos-dns/config.json
   "email": "root.mesos-dns.mesos"
 }
 EOF
+
+#create marathon application specs for mesos-dns
+cat <<EOF > ~/marathon-mesosdns.json
+{
+    "args": [
+        "/mesos-dns",
+        "-config=/config.json"
+    ],
+    "container": {
+        "docker": {
+            "image": "mesosphere/mesos-dns",
+            "network": "HOST"
+        },
+        "type": "DOCKER",
+        "volumes": [
+            {
+                "containerPath": "/config.json",
+                "hostPath": "/etc/mesos-dns/config.js",
+                "mode": "RO"
+            }
+        ]
+    },
+    "cpus": 0.2,
+    "id": "mesos-dns",
+    "instances": 1,
+}
+EOF
+
+#Post app specs via Marathon API
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d@~/marathon-mesosdns.json
