@@ -32,5 +32,12 @@ sh -c "echo manual | tee /etc/init/mesos-master.override"
 sh -c "echo $slaveip | tee /etc/mesos-slave/ip"
 cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 
+#configure slave configuration to specify the use of Docker containerizers
+sh -c "echo 'docker,mesos' > /etc/mesos-slave/containerizers"
+#Increase the executor timeout to account for the potential delay in pulling a docker image to the slave
+sh -c "echo '5mins' > /etc/mesos-slave/executor_registration_timeout"
+
+
+
 #restart mesos slave
 service mesos-slave restart
