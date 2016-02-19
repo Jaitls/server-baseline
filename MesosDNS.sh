@@ -54,4 +54,4 @@ cat <<EOF > ~/marathon-mesosdns.json
 EOF
 
 #Post app specs via Marathon API
-curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d@~/marathon-mesosdns.json
+su jaitls -c "curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d@~/marathon-mesosdns.json"
