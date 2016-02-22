@@ -15,6 +15,10 @@ gpasswd -a jaitls sudo
 #copy authorized public key
 su jaitls -c "mkdir ~/.ssh; chmod 700 ~/.ssh"
 cat ~/.ssh/authorized_keys >> /home/jaitls/.ssh/authorized_keys
+chmod 700 /home/jaitls/.ssh
+chmod 600 /home/jaitls/.ssh/authorized_keys
+chown jaitls:jaitls /home/jaitls/.ssh/authorized_keys
+
 
 #disable root login and ssh password authentiation
 sed -i.bak -e 's/PermitRootLogin\syes/PermitRootLogin no/' /etc/ssh/sshd_config
