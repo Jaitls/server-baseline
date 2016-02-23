@@ -19,7 +19,6 @@ chmod 700 /home/jaitls/.ssh
 chmod 600 /home/jaitls/.ssh/authorized_keys
 chown jaitls:jaitls /home/jaitls/.ssh/authorized_keys
 
-
 #disable root login and ssh password authentiation
 sed -i.bak -e 's/PermitRootLogin\syes/PermitRootLogin no/' /etc/ssh/sshd_config
 sed -i''      -e 's/#PasswordAuthentication\syes/PasswordAuthentication no/' /etc/ssh/sshd_config

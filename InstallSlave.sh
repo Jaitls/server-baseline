@@ -41,6 +41,7 @@ apt-get -y update
 #apt-get -y install mesosphere
 #this will install mesos and zookeeper (for all slaves)
 apt-get -y install mesos
+
 #install docker on all slaves
 apt-get -y install apt-transport-https ca-certificates
 apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D

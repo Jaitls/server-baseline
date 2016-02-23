@@ -37,7 +37,5 @@ sh -c "echo 'docker,mesos' > /etc/mesos-slave/containerizers"
 #Increase the executor timeout to account for the potential delay in pulling a docker image to the slave
 sh -c "echo '5mins' > /etc/mesos-slave/executor_registration_timeout"
 
-
-
 #restart mesos slave
 service mesos-slave restart
