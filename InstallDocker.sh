@@ -10,3 +10,6 @@ apt-get purge lxc-docker
 apt-get -y install apparmor
 apt-get -y install linux-image-extra-$(uname -r)
 apt-get -y install docker-engine
+usermod -aG docker jaitls
+newgrp - docker
+servive docker restart
